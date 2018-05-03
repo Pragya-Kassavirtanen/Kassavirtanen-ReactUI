@@ -3,6 +3,8 @@ import { reduxForm } from 'redux-form'
 
 import CustomerComponent from '../../components/customer/customer.component'
 
+import { addCustomerRow } from '../../actions'
+
 import { countryItems, invoiceItems } from '../../utils/invoice.utils'
 
 let CustomerContainer = reduxForm({
@@ -22,14 +24,14 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+/* const mapDispatchToProps = (dispatch) => {
   return {
     dispatch
   }
-}
+} */
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, stateProps, dispatchProps, ownProps)
 
-CustomerContainer = connect(mapStateToProps, mapDispatchToProps, mergeProps)(CustomerContainer)
+CustomerContainer = connect(mapStateToProps, { addCustomerRow }, mergeProps)(CustomerContainer)
 
 export default CustomerContainer

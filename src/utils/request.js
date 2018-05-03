@@ -64,3 +64,22 @@ export const identityServerPost = (url, body, method = 'POST') => {
     }).then(data => ({ data }))
     .catch(error => ({ error }))
 }
+
+export const apiServerPost = (url, body, method = 'POST') => {  
+
+  const headers = new Headers()
+  headers.append('Content-Type', 'application/json')
+
+  const options = {
+    method,
+    headers,   
+    body
+  }
+
+  return fetch(url, options)
+    .then(res => {
+      if(res.status === 200) {        
+        return res.json()}
+    }).then(data => ({ data }))
+    .catch(error => ({ error }))
+}

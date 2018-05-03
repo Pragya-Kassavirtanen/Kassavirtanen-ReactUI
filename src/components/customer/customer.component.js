@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Field } from 'redux-form'
 
 import {
@@ -6,11 +6,14 @@ import {
   TableBody,
   TableHeader,
   TableRow,
-  TableHeaderColumn
+  TableHeaderColumn,
+  RaisedButton
 } from  'material-ui'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
+
+import { addCustomerRow } from '../../actions'
 
 import { renderTextField, renderSelectField } from '../../utils/wrappers'
 
@@ -18,74 +21,77 @@ import { renderTextField, renderSelectField } from '../../utils/wrappers'
  * @author  Skylar Kong
  */
 
-export default class CustomerComponent extends React.Component {
+class CustomerComponent extends Component {
 
-  componentWillMount() {
-    // this.props.getCustomersStart()
+  onFormSubmit = (values) => { 
+    console.log("Customer Values:: ", values)
+    this.props.addCustomerRow(values)
   }
 
   render() {
-    return <Customer {...this.props} />
+
+    const { customerRows, countryItems, invoiceItems, handleSubmit, reset } = this.props
+
+    return (
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <section className="container-fluid">
+        <section className="row">
+          <section className="dashboard-content-header">
+            <h1>Asiakkaat</h1>
+          </section>
+        </section>
+        <section className="dashboard-content-header">
+          <hr/>
+        </section>
+        <section className="row">
+          <section className="dashboard-content-header">
+            <section className="col-xs-12 col-sm-12 col-lg-12">
+              <section className="panel panel-default">
+                <section className="panel-heading">
+                  <h3 className="panel-title">Asiakkaat</h3>
+                </section>
+                <section className="panel-body">
+                  {createCustomerRows(customerRows)}
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+        <section className="row">
+          <section className="dashboard-content-header">
+            <h1>LUO UUSI ASIAKAS</h1>
+          </section>
+        </section>
+        <section className="dashboard-content-header">
+          <hr/>
+        </section>
+        <form onSubmit={handleSubmit(this.onFormSubmit)}>
+          <section className="row">
+            <section className="dashboard-content-header">
+              <section className="col-xs-12 col-sm-6 col-lg-6">
+                {customerInfo(countryItems)}
+              </section>
+              <section className="col-xs-12 col-sm-6 col-lg-6">
+                {invoiceInfo(invoiceItems)}
+              </section>
+            </section>
+          </section>
+          <section className="row">
+            <section className="dashboard-content-header">       
+              <ul className="nav nav-pills pull-right">
+                <li><RaisedButton label="Tallentaa" primary={true} type="submit"/></li>
+                <li><RaisedButton label="Peruuttaa" primary={true} onClick={reset}/></li>
+              </ul>
+            </section>
+          </section>     
+        </form>
+      </section>
+    </MuiThemeProvider>
+
+    )
   }
 }
 
-const _onFormSubmit = (values, e) => {
-  e.preventDefault()
-}
-
-const Customer = ({
-  customerRows,
-  countryItems,
-  invoiceItems,
-  handleSubmit
-}) =>
-  <MuiThemeProvider muiTheme={getMuiTheme()}>
-    <section className="container-fluid">
-      <section className="row">
-        <section className="dashboard-content-header">
-          <h1>Asiakkaat</h1>
-        </section>
-      </section>
-      <section className="dashboard-content-header">
-        <hr/>
-      </section>
-      <section className="row">
-        <section className="dashboard-content-header">
-          <section className="col-xs-12 col-sm-12 col-lg-12">
-            <section className="panel panel-default">
-              <section className="panel-heading">
-                <h3 className="panel-title">Asiakkaat</h3>
-              </section>
-              <section className="panel-body">
-                {createCustomerRows(customerRows)}
-              </section>
-            </section>
-          </section>
-        </section>
-      </section>
-      <section className="row">
-        <section className="dashboard-content-header">
-          <h1>LUO UUSI ASIAKAS</h1>
-        </section>
-      </section>
-      <section className="dashboard-content-header">
-        <hr/>
-      </section>
-      <form onSubmit={handleSubmit(_onFormSubmit)}>
-        <section className="row">
-          <section className="dashboard-content-header">
-            <section className="col-xs-12 col-sm-6 col-lg-6">
-              {customerInfo(countryItems)}
-            </section>
-            <section className="col-xs-12 col-sm-6 col-lg-6">
-              {invoiceInfo(invoiceItems)}
-            </section>
-          </section>
-        </section>
-      </form>
-    </section>
-
-  </MuiThemeProvider>
 
 const customerInfo = (countryItems) =>
   <section className="panel panel-default">
@@ -170,3 +176,5 @@ const createCustomerRows = (customerRows) =>
       </TableBody>
     </Table>
   </section>
+
+export default CustomerComponent

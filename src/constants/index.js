@@ -11,6 +11,13 @@ export const SIGNUP_FORM_SUBMIT   = 'SIGNUP_FORM_SUBMIT'
 export const SIGNUP_SUCCESS =  'SIGNUP_SUCCESS'
 export const SIGNUP_FAILED =  'SIGNUP_FAILED'
 
+export const ADD_CUSTOMER_ROW = 'ADD_CUSTOMER_ROW'
+export const ADD_CUSTOMER_SUCCESS = 'ADD_CUSTOMER_SUCCESS'
+export const ADD_CUSTOMER_FAILED = 'ADD_CUSTOMER_FAILED'
+
+export const REMOVE_CUSTOMER_ROW = 'REMOVE_CUSTOMER_ROW'
+export const EDIT_CUSTOMER_ROW = 'EDIT_CUSTOMER_ROW'
+
 export const CHECK_AUTH_INFO = '@@dashboard/CHECK_AUTH_INFO'
 export const CHECK_AUTH_INFO_SUCCESS = '@@dashboard/CHECK_AUTH_INFO_SUCCESS'
 export const CHECK_AUTH_INFO_FAILED = '@@dashboard/CHECK_AUTH_INFO_FAILED'
@@ -43,7 +50,6 @@ export const LOAD_PROFILE_SUCCESS = '@@profile/LOAD_PROFILE_SUCCESS'
 export const LOAD_PROFILE_FAILED = '@@profile/LOAD_PROFILE_FAILED'
 export const LOAD_PROFILE_START = '@@profile/LOAD_PROFILE_START'
 
-export const API_DEV_SERVER = 'https://localhost:8443/api'
-
+export const KVT_API_SERVER = 'https://kvtmiddlelayer.azurewebsites.net/api'
 export const KVT_IDENTITY_SERVER = 'https://kvt-identityserver.azurewebsites.net/api'
 

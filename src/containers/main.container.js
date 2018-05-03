@@ -13,7 +13,7 @@ import store from '../store'
 // This method will be called every time
 // when the store is updated
 const mapStateToProps = state => {
-  return {   
+  return {
     user : state.oidc.user ? state.oidc.user : (store.getState()).client.user,
     navItems: navItems
   }
@@ -24,8 +24,8 @@ const mapDispatchToProps = dispatch => {
 
   return {
       handleManualLogout: (e) => {
-        dispatch({ type:"CLIENT_UNSET", e })
-      }    
+        dispatch({ type:'CLIENT_UNSET', e })
+      }
    }
 }
 

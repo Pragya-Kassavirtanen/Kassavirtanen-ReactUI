@@ -10,6 +10,13 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAILED,
 
+  ADD_CUSTOMER_ROW,
+  ADD_CUSTOMER_SUCCESS,
+  ADD_CUSTOMER_FAILED,
+
+  REMOVE_CUSTOMER_ROW,
+  EDIT_CUSTOMER_ROW,
+
   CALCULATE_INVOICE_SUM,
   CALCULATE_INVOICE_DUEDATE,
   ADD_INVOICE_ROW,
@@ -76,3 +83,10 @@ export const unsetClient = () => ({ type: CLIENT_UNSET })
 export const registerFormSubmit = (email, password) => ({ type: SIGNUP_FORM_SUBMIT, email, password })
 export const registerSuccess = result => ({ type: SIGNUP_SUCCESS, result })
 export const registerFailed = error => ({ type: SIGNUP_FAILED, error })
+
+export const addCustomerRow = () => ({ type: ADD_CUSTOMER_ROW })
+export const addCustomerSuccess = customer => ({ type: ADD_CUSTOMER_SUCCESS, customer })
+export const addCustomerFailed = error => ({ type: ADD_CUSTOMER_FAILED, error })
+
+export const removeCustomerRow = rowNumber => ({ type: REMOVE_CUSTOMER_ROW, rowNumber })
+export const editCustomerRow = () => ({ type: EDIT_CUSTOMER_ROW })

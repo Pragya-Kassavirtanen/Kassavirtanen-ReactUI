@@ -4,6 +4,8 @@ import { watchCheckAuthInfoSaga } from './dashboard.saga'
 import { watchLoadProfileSaga } from './profile.saga'
 import { watchRegisterUserSaga } from './register.saga'
 import  watchLoginSaga  from './login.saga'
+import { watchCustomerSaga }   from './customer.saga'
+
 
 // Single entry point to start all sagas at once
 export default function* rootSaga() {
@@ -14,6 +16,7 @@ export default function* rootSaga() {
     watchCheckAuthInfoSaga(),
     watchLoadProfileSaga(),
     watchRegisterUserSaga(),
-    watchLoginSaga()
+    watchLoginSaga(),
+    watchCustomerSaga()
   ]
 }
